@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const TemplateOne = () => {
@@ -6,53 +5,38 @@ const TemplateOne = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-10 text-center font-sans">
-      
-      {/* Profile Image */}
-      <img src={profile.image} alt="Profile" className="w-40 h-40 object-cover rounded-full mx-auto mb-6 shadow-lg border-4 border-black" />
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white flex flex-col items-center px-4 py-10 font-sans">
 
-      {/* Name and About */}
-      <h1 className="text-3xl font-bold mb-2">Hi, I'm {profile.name}</h1>
-      <p className="text-gray-700 text-md mb-6">{profile.about}</p>
+      <img src={profile.image} alt="Profile" className="w-32 h-32 md:w-40 md:h-40 object-cover rounded-full border-4 border-white shadow-lg mb-6" />
 
-      {/* Skills */}
-      <div className="mb-8">
-        <h2 className="text-xl font-semibold mb-3">Skills</h2>
-        <div className="flex flex-wrap justify-center gap-2">
+      <h1 className="text-4xl font-extrabold tracking-wide">{profile.name}</h1>
+      <p className="mt-3 text-gray-300 max-w-2xl text-center">{profile.about}</p>
+
+      <div className="mt-10 w-full max-w-3xl">
+        <h2 className="text-2xl font-semibold border-b border-gray-700 pb-2 mb-4">Skills</h2>
+        <div className="flex flex-wrap gap-3">
           {profile.skills.split(',').map((skill, index) => (
-            <span key={index} className="bg-black text-white px-3 py-1 rounded-full text-sm" >
-              {skill.trim()}
-            </span>
+            <span key={index} className="bg-white text-black text-sm px-4 py-1 rounded-full shadow hover:scale-105 transition" > {skill.trim()} </span>
           ))}
         </div>
       </div>
 
-      {/* Portfolio Site */}
       {profile.portfolio && (
-        <div className="mb-8">
-          <h2 className="text-xl font-semibold mb-2">Portfolio Website</h2>
-          <a href={profile.portfolio} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline hover:text-blue-800" >
-            Visit My Portfolio
-          </a>
+        <div className="mt-10 w-full max-w-3xl">
+          <h2 className="text-2xl font-semibold border-b border-gray-700 pb-2 mb-4">Portfolio</h2>
+          <a href={profile.portfolio} target="_blank" rel="noopener noreferrer" className="inline-block bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-5 py-2 rounded-lg shadow-md hover:brightness-110" > Visit My Portfolio</a>
         </div>
       )}
 
-      {/* Social Links */}
-      <div className="mb-10">
-        <h2 className="text-xl font-semibold mb-3">Social Links</h2>
-        <div className="flex justify-center gap-5">
-          <a href={profile.github} target="_blank" rel="noopener noreferrer" className="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700 transition"
-          >
-            GitHub
-          </a>
-          <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-600 transition" >
-            LinkedIn
-          </a>
+      <div className="mt-10 w-full max-w-3xl">
+        <h2 className="text-2xl font-semibold border-b border-gray-700 pb-2 mb-4">Social Links</h2>
+        <div className="flex flex-col sm:flex-row gap-4">
+          <a href={profile.github} target="_blank" rel="noopener noreferrer" className="flex-1 bg-gray-800 hover:bg-gray-700 text-white text-center py-2 rounded-lg shadow-md" > GitHub </a>
+          <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="flex-1 bg-blue-700 hover:bg-blue-600 text-white text-center py-2 rounded-lg shadow-md">LinkedIn</a>
         </div>
       </div>
 
-      {/* Go Back Button */}
-      <button onClick={() => navigate('/preview')} className="bg-black text-white px-6 py-2 rounded hover:bg-gray-900 transition">
+      <button onClick={() => navigate('/preview')} className="mt-12 px-6 py-2 bg-white text-black rounded-full shadow hover:bg-gray-100" >
         Go Back
       </button>
     </div>
